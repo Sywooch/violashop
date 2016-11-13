@@ -1,0 +1,191 @@
+@mixin box-shadow($shadows...){
+  -webkit-box-shadow: $shadows;
+  -moz-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+@mixin border-radius ($radius){
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;;
+}
+@mixin do-circle($diameter){
+  @include border-radius(50%);
+  //width: 80px;
+  width: $diameter;
+  height:$diameter;
+}
+@mixin transform($transformation){
+  -webkit-transform: $transformation;
+  -moz-transform: $transformation;
+  -ms-transform: $transformation;
+  -o-transform: $transformation;
+  transform: $transformation;
+}
+.notification{
+  float:right;
+  font-size:24px;
+  color:#fff;
+  position: relative;
+  top: 10px;
+  cursor:pointer;
+  opacity: .8;
+  margin-right: 10px;
+
+  .orders-count{
+    position: absolute;
+    display:block;
+    @include do-circle(15px);
+    top: 0;
+    font-size: 12px;
+    text-align: center;
+    background: #e25e77;
+    color: #fff;
+
+    right: -6px;
+  }
+  &:hover{
+    opacity: 1;
+  }
+}
+/*----- tooltips ------*/
+.tooltips {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  @include border-radius(3px);
+  background-color: #ffffff;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  padding: 10px 4px 10px 10px;
+  color: #333;
+  width: 160px;
+  left: -175px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.3;
+  cursor:default;
+  &:before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    background: white;
+    right: -9px;
+    left: initial;
+    top: 40%;
+    bottom: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    @include transform(rotate(45deg));
+    z-index: -1;
+    border-left: none;
+    border-bottom: none;
+  }
+  &.tooltips-top {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    @include border-radius(3px);
+    background-color: #ffffff;
+    border: solid 1px rgba(0, 0, 0, 0.2);
+    padding: 10px 4px 10px 10px;
+    color: #333;
+    width: 280px;
+    /* right: -175px; */
+    text-align: left;
+    top: -57px;
+    left: -128px;
+    font-size: 14px;
+    line-height: 1.3;
+    &:before {
+
+      content: '';
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      background: white;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      /* bottom: -23px; */
+      top: 83%;
+      bottom: -7px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      @include transform(rotate(45deg));
+      z-index: -1;
+      border-right: none;
+      border-bottom: none;
+    }
+  }
+  &.tooltips-top-left {
+    z-index: 100;
+    @include border-radius(3px);
+    border: 1px solid rgba(0,0,0,.2);
+    width: 260px;
+    @include box-shadow(0 4px 10px 0 rgba(0, 0, 0, 0.12));
+    &:before{
+      width: 16px;
+      position: absolute;
+      left: 40px;
+      right: initial;
+      /* right: 0; */
+      margin: 0 auto;
+      top: -9px;
+      border: 1px solid rgba(0,0,0,.2);
+      z-index: -1;
+      border-right: none;
+      border-bottom: none;
+    }
+  }
+
+}
+
+
+/*== end tooltips ==*/
+
+.admin-content{
+  border:1px solid #ececec;
+  padding: 15px;
+  @include border-radius(3px);
+  .add-wrapper{
+    padding:10px;
+  }
+  .load-img{
+    border: 1px dashed grey;
+    width:210px;
+    height:210px;
+    padding:5px;
+    float:left;
+    margin-right: 15px;
+    margin-bottom:15px;
+    position:relative;
+    cursor:pointer;
+
+    img {
+      width:200px;
+      height:200px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    .delete{
+      position:absolute;
+      top:0;
+      right:7px;
+      font-size: 24px;
+      width:15px;
+      height: 15px;
+      text-align: center;
+      cursor: pointer;
+      color:#e25e77;
+      opacity: .5;
+
+      &:hover{
+        opacity: 1;
+      }
+    }
+    &.button_add_img{
+      background: url(/admin/images/1476023051_BT_camera.png) no-repeat center center;
+      &:hover{
+        @include box-shadow(0 0 10px 5px rgba(0,0,0,0.1))
+      }
+    }
+  }
+}

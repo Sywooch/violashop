@@ -1,0 +1,59 @@
+.product-card {
+  width: 380px;
+  //min-height: 450px;
+  border: solid 1px #e25e77;
+  max-width: 100%;
+  padding: 20px 20px 20px 20px;
+  text-align: left;
+  position: relative;
+  @media(max-width: $md-max-width) {
+    padding: 23px 20px 25px 20px;
+    float: left;
+
+  }
+  @media(max-width: $xs-max-width) {
+    margin-top:20px;
+  }
+  .product-description{
+    border-bottom: 1px solid rgba(231,231,231,0.5);
+    padding-bottom: 10px;
+  }
+  .prices{
+    /*position: absolute;
+    bottom:20px;*/
+    margin-top: 20px;
+    display: inline-block;
+    text-align: right;
+    p.price{
+      margin-right: 20px;
+      .type{
+        font-size: 20px;
+
+      }
+      .price{
+        font-size: 24px;
+        font-weight: 700;
+      }
+    }
+    .btn-buy{
+      top: -4px;
+    }
+  }
+  .likely .likely__widget {
+    height: 34px;
+    background: #fff;
+    border: 1px solid rgb(231,231,231);
+  }
+  .likely__widget_twitter:active, .likely__widget_twitter:focus, .likely__widget_twitter:hover {
+    background: rgba(191,237,250,.8);
+  }
+  .likely__widget_facebook:active, .likely__widget_facebook:focus, .likely__widget_facebook:hover {
+    background: rgba(207,212,229,.8);
+  }
+  .likely__widget_vkontakte:active, .likely__widget_vkontakte:focus, .likely__widget_vkontakte:hover {
+    background: rgba(211,218,227,.8);
+  }
+  .likely__widget_odnoklassniki:active, .likely__widget_odnoklassniki:focus, .likely__widget_odnoklassniki:hover {
+    background: rgba(252,227,206,.8);
+  }
+}

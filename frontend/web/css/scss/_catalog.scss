@@ -1,0 +1,76 @@
+.labels-wrapper {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  //width: 36px;
+  @media (max-width: 1023px) {
+    top: 10px;
+    left: 10px;
+  }
+  div.labels {
+    @include border-radius(3px);
+    //padding-top: 2px;
+    //padding-bottom: 1px;
+    /*position: absolute;
+    top: 18px;
+    left: 28px;*/
+    margin-bottom:10px;
+    font-family: HelveticaNeue, Helvetica, sans-serif;
+    font-size: 10px;
+    padding: 4px 10px;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    span {
+      vertical-align: middle;
+      position: relative;
+      //top: 6px;
+    }
+    &.novielty {
+      background: $novelty;
+      color: #fff;
+
+    }
+  }
+}
+.spinner {
+  margin: 100px auto 0;
+  width: 70px;
+  text-align: center;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #e25e77;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% {
+      -webkit-transform: scale(1.0);
+      transform: scale(1.0);
+    }
+}
