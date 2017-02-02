@@ -1,26 +1,11 @@
-@mixin box-shadow($shadows...){
-  -webkit-box-shadow: $shadows;
-  -moz-box-shadow: $shadows;
-  box-shadow: $shadows;
-}
-@mixin border-radius ($radius){
-  -webkit-border-radius: $radius;
-  -moz-border-radius: $radius;
-  border-radius: $radius;;
-}
-@mixin do-circle($diameter){
-  @include border-radius(50%);
-  //width: 80px;
-  width: $diameter;
-  height:$diameter;
-}
-@mixin transform($transformation){
-  -webkit-transform: $transformation;
-  -moz-transform: $transformation;
-  -ms-transform: $transformation;
-  -o-transform: $transformation;
-  transform: $transformation;
-}
+$webkit: true !default;
+$moz: false !default;
+$ms: false !default;
+$o: false !default;
+
+@import "mixins";
+
+
 .notification{
   float:right;
   font-size:24px;
@@ -40,7 +25,6 @@
     text-align: center;
     background: #e25e77;
     color: #fff;
-
     right: -6px;
   }
   &:hover{
@@ -142,7 +126,7 @@
 /*== end tooltips ==*/
 
 .admin-content{
-  border:1px solid #ececec;
+  // border:1px solid #ececec;
   padding: 15px;
   @include border-radius(3px);
   .add-wrapper{
@@ -189,3 +173,11 @@
     }
   }
 }
+
+a {
+  &:focus{outline: none;}
+}
+
+@import "inputs";
+@import "edit_viola";
+@import "catalog";

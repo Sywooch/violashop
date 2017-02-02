@@ -1,5 +1,5 @@
 $menu-color: #07c;
-$link-color: #07c;
+$link-color: #333;
 $link-hover: #ed7999;//#f26281;
 $menu-border-color: #07c;
 $button-buy-color: #a386b9;//#e25e77;
@@ -23,72 +23,8 @@ $lg-max-width: 1439px;
 
 $xlg-min-width: 1440px;
 $xlg-max-width: 1920px;
+@import "mixins";
 
-@mixin border-radius ($radius){
-  -webkit-border-radius:$radius;
-  -moz-border-radius:$radius;
-  border-radius:$radius;
-}
-
-@mixin transitionAll($time){
-  -webkit-transition: all $time;
-  -moz-transition: all $time;
-  -o-transition: all $time;
-  transition: all $time;
-}
-
-@mixin box-shadow($shadows...){
-  -webkit-box-shadow: $shadows;
-  -moz-box-shadow: $shadows;
-  box-shadow: $shadows;
-}
-@mixin background-image ($back){
-  -webkit-background-image: $back;
-  -moz-background-image: $back;
-  -o-background-image: $back;
-  background-image: $back;
-}
-@mixin do-circle($diameter){
-  @include border-radius(50%);
-  //width: 80px;
-  width: $diameter;
-  height:$diameter;
-}
-@mixin appearance($params){
-  -webkit-appearance: $params;
-  -moz-appearance: $params;
-  appearance: $params;
-}
-@mixin transform($transformation){
-  -webkit-transform: $transformation;
-  -moz-transform: $transformation;
-  -ms-transform: $transformation;
-  -o-transform: $transformation;
-  transform: $transformation;
-}
-@mixin optional-at-root($sel) {
-  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
-    @content;
-  }
-}
-
-@mixin placeholder {
-  @include optional-at-root('::-webkit-input-placeholder') {
-    @content;
-  }
-
-  @include optional-at-root(':-moz-placeholder') {
-    @content;
-  }
-
-  @include optional-at-root('::-moz-placeholder') {
-    @content;
-  }
-
-  @include optional-at-root(':-ms-input-placeholder') {
-    @content;
-  }
-}
 $no-paddings: (
         left :0,
         right: 0,
@@ -116,6 +52,20 @@ $no-paddings: (
   font-style: italic;
 }
 /*------*/
+
+a {
+  color: $link-color;
+  &:hover {
+    color: $link-hover;
+    text-decoration: none;
+  }
+  &:focus, &:active:focus{
+    outline: none;
+    color: $link-hover;
+  }
+}
+
+
 .btn{
   &:active {
     outline: none;
@@ -161,6 +111,7 @@ $no-paddings: (
 
 
 }
+@import "head";
 .navbar-toggle {
   position: relative;
   float: left;
@@ -218,7 +169,7 @@ input.search{
   outline: 0;
   border-bottom: solid 1px rgba(153, 153, 153, .25);
   width: 300px;
-  height:21px;
+  height:22px;
   font-family: HelveticaNeue, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -260,59 +211,7 @@ input.search:focus{
   background-position: -218px 0;
 }
 // ---- search ----
-.search-results{
-  position: absolute !important;
-  background: #fff;
-  width: 415px;
-  max-height: 350px;
-  min-height: 100px;
-  //height:100px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  //border: 1px solid;
-  top: 22px;
-  right: 0;
-  padding:10px;
-/*  padding-top:10px !important;
-  padding-left: 10px !important;
-  padding-right: 10px !important;*/
-  @include border-radius(2px);
-  @include box-shadow(0 7px 40px rgba(0, 0, 0, 0.11));
-  display:none;
-  z-index: 2;
-  .spinner{
-    top: 50%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: -9px auto 0;
-  }
-  .top_search {
-    max-height: 235px;
-  }
-  .bottom_search{
-    background :#fff;
-  }
-  .fade {
-    position: absolute;
-    width: 50px;
-    height: 20px;
-    opacity: 1;
-    top: 0;
-    right: -15px;
-    background-image: linear-gradient(to right,rgba(#fff,.5),#fff);
-  }
-  .searchname  {
-    position: absolute;
-    top: 0;
-    height: 20px;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  p.head{
-    text-align: left;
-  }
-}
+
 //== --- end search ---==
 .wrap {
   #w0{
@@ -327,9 +226,11 @@ input.search:focus{
         color: $link-hover !important;
       }
       &:active {
+        color: $link-hover;
         text-decoration: none !important;
       }
       &:focus {
+        color: $link-hover;
         text-decoration: none !important;
       }
     }
@@ -370,11 +271,12 @@ input.search:focus{
 
           a{
             color:$link-color;
-            border-bottom: 1px solid rgba($link-color, .3);
-            padding: 0 0 1px;
+            padding: 0;
+            //border-bottom: 1px solid rgba($link-color, .3);
+            // padding: 0 0 1px;
             &:hover {
               text-decoration: none !important;
-              border-bottom: 1px solid rgba($link-hover, .3);
+              //border-bottom: 1px solid rgba($link-hover, .3);
               color: $link-hover !important;
             }
             &:active {
@@ -533,24 +435,65 @@ a.full-block-link {
 .item{
   text-align: center;
   height: 400px;
+
+  @media (min-width: 780px) {
+    width: 50%;
+  }
+  @media (min-width: 1366px) {
+    width: 33.3333%;
+  }
+
+  @media (max-width: 779px) {
+    width: 100%;
+  }
+
   /*width:300px;*/
   float:left;
   padding-left:10px;
   padding-right: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  .card{
+    height: 100%;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    position: relative;
+    margin: .5rem 0 1rem 0;
+    background-color: #fff;
+    transition: box-shadow .25s;
+    border-radius: 2px;
+    &:hover{
+      box-shadow: 0 2px 8px 3px rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+      img {
+        transform: scale(1.035);
+      }
+    }
+  }
+  a {
+    font-size: 18px;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
   .img {
-    width:300px;
-    height:300px;
+    // width:280px;
+    // height:300px;
     max-width:100%;
     position: relative;
     margin: 0 auto;
     @include transitionAll(.5s);
+    overflow:hidden;
+    &:hover {
+      img {
+        transform: scale(1.045);
+      }
+    }
     img {
       object-fit: contain;
-      height:300px;
-      width:300px;
+      //height:300px;
+      //width:300px;
       max-width:100%;
-      padding:5px;
+      transform: scale(1);
+      transition: all .25s;
+      // padding:5px;
     }
     .description{
       position: absolute;
@@ -570,19 +513,26 @@ a.full-block-link {
       }
     }
 
-    &:hover {
+    /*&:hover {
       @include box-shadow(0 7px 40px rgba(0,0,0,0.11));
       .description {
         opacity: 1;
       }
-    }
+    }*/
 
+  }
+  .buttons-stock {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
   }
   .prices{
     margin-top: 5px;
     p {
-      margin-bottom:5px;
+      margin-bottom:10px;
       display: inline-block;
+      margin-right: 10px;
       span{
         vertical-align: middle;
       }

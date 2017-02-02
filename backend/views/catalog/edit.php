@@ -3,15 +3,49 @@
 
 $this->title = 'Каталог';
 ?>
-<div class="row">
+
     <span id="prodId" data-id="<?=$product['id']?>" style="display: none;"></span>
-    <div class="admin-content">
+
     
         <form class="form-horizontal">
-            <div class="form-group">
+            <div class="form-group my-inputs">
                 <label for="inputName" class="col-sm-2 control-label">Наименование</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control js-input-field" id="inputName" placeholder="Название" value="<?=$product['name']?>" data-field="name">
+                    <div class="my-input my-input-medium">
+                        <input type="text" class="my-input__input form-control js-input-field" id="inputName" placeholder="Название" value="<?=$product['name']?>" data-field="name">
+                        <label for="inputName" class="my-input__label">&nbsp;</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Категория</label>
+                <div class="col-sm-10">
+                    <div class="my-select__select">
+                        <select class="selectpicker">
+                            <optgroup label="Новинки">
+                                <option value="1">Новинки РС - Стандарты</option>
+                                <option value="2">Новинки РС - Трейлеры</option>
+                                <option value="3">Новинки РС - Мини</option>
+                                <option value="4">Новинки РС - Стрептокарпусы</option>
+                            </optgroup>
+                            <optgroup label="Сорта РС">
+                                <option value="5">Стандарты</option>
+                                <option value="6">Трейлеры</option>
+                                <option value="7">Мини</option>
+                                <option value="8">Стрепсы</option>
+                            </optgroup>
+                            <optgroup label="Мини полумини">
+                                <option value="9">Мини и полумини</option>
+                            </optgroup>
+                            <optgroup label="Стрепсы">
+                                <option value="10">Стрептокарпусы</option>
+                            </optgroup>
+                            <optgroup label="Спецпредожения">
+                                <option value="10">Спецпредлжение</option>
+                            </optgroup>
+                            
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
@@ -28,36 +62,49 @@ $this->title = 'Каталог';
             </div>
             <p class="col-sm-2 text-right" style="margin-left:-10px;"><b>Наличие:</b></p>
             <div class="clearfix"></div>
-            <div class="form-group">
+            <div class="form-group form-price">
                 <div class="col-sm-2 col-sm-offset-2">
                     <input type="checkbox" id="head" class="js-in-stock" value="1" data-field="head_stock" <?=(($product['head_stock'] == 1)?'checked':'')?> >
                     <label for="head">Черенок</label>
                 </div>
-                <div class="col-sm-6">
-                    <label for="headPrice">Цена</label>
-                    <input type="number" id="headPrice" class="js-input-field" data-field="head_price" value="<?=$product['head_price']?>">
+                <div class="col-sm-6 my-inputs">
+                    <label for="headPrice" class="my-inputs__label">Цена</label>
+                    <div class="my-input my-input-small">
+                        <input type="text" id="headPrice" class="my-input__input form-control js-input-field" data-field="head_price" value="<?=$product['head_price']?>">
+                        <label for="headPrice" class="my-input__label">&nbsp;</label>
+                        <span class="my-input__description">&#8381;</span>
+                    </div>
                 </div>
             </div>
     
-            <div class="form-group">
+            <div class="form-group form-price">
                 <div class="col-sm-2 col-sm-offset-2">
                     <input type="checkbox" id="child" class="js-in-stock" value="1" data-field="child_stock" <?=(($product['child_stock'] == 1)?'checked':'')?>>
                     <label for="child">Детка</label>
                 </div>
-                <div class="col-sm-6">
-                    <label for="childPrice">Цена</label>
-                    <input type="number" id="childPrice" class="js-input-field" data-field="child_price" value="<?=$product['child_price']?>">
+                <div class="col-sm-6 my-inputs">
+                    <label for="childPrice" class="my-inputs__label">Цена</label>
+                    <div class="my-input my-input-small">
+                        <input type="text" id="childPrice" class="my-input__input form-control js-input-field" data-field="child_price" value="<?=$product['child_price']?>">
+                        <label for="childPrice" class="my-input__label">&nbsp;</label>
+                        <span class="my-input__description">&#8381;</span>
+                    </div>
+                    
                 </div>
             </div>
     
-            <div class="form-group">
+            <div class="form-group form-price">
                 <div class="col-sm-2 col-sm-offset-2">
                     <input type="checkbox" id="plant" class="js-in-stock" value="1" data-field="stock" <?=(($product['stock'] == 1)?'checked':'')?>>
                     <label for="plant">Растение</label>
                 </div>
-                <div class="col-sm-6">
-                    <label for="plantPrice">Цена</label>
-                    <input type="number" id="plantPrice" class="js-input-field" data-field="price" value="<?=$product['price']?>">
+                <div class="col-sm-6 my-inputs">
+                    <label for="plantPrice" class="my-inputs__label">Цена</label>
+                    <div class="my-input my-input-small">
+                        <input type="text" id="plantPrice" class="my-input__input form-control js-input-field" data-field="price" value="<?=$product['price']?>">
+                        <label for="plantPrice" class="my-input__label">&nbsp;</label>
+                        <span class="my-input__description">&#8381;</span>
+                    </div>
                 </div>
             </div>
     
@@ -85,5 +132,4 @@ $this->title = 'Каталог';
             <input type="file" style="display:none" id="add_img_input">
         </form>
         <div class="clearfix"></div>
-    </div>
-</div>
+

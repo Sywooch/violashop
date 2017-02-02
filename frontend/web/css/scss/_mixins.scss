@@ -1,0 +1,80 @@
+
+@mixin transitionEaseAll($time){
+  -webkit-transition: ease all $time;
+  -moz-transition: ease all $time;
+  -o-transition: ease all $time;
+  transition: ease all $time;
+}
+
+@mixin transitions($transitions...){
+  -webkit-transition: $transitions;
+  -moz-transition: $transitions;
+  -o-transition: $transitions;
+  transition: $transitions;
+}
+
+@mixin border-radius ($radius){
+  -webkit-border-radius:$radius;
+  -moz-border-radius:$radius;
+  border-radius:$radius;
+}
+
+@mixin transitionAll($time){
+  -webkit-transition: all $time;
+  -moz-transition: all $time;
+  -o-transition: all $time;
+  transition: all $time;
+}
+
+@mixin box-shadow($shadows...){
+  -webkit-box-shadow: $shadows;
+  -moz-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+@mixin background-image ($back){
+  -webkit-background-image: $back;
+  -moz-background-image: $back;
+  -o-background-image: $back;
+  background-image: $back;
+}
+@mixin do-circle($diameter){
+  @include border-radius(50%);
+  //width: 80px;
+  width: $diameter;
+  height:$diameter;
+}
+@mixin appearance($params){
+  -webkit-appearance: $params;
+  -moz-appearance: $params;
+  appearance: $params;
+}
+@mixin transform($transformation){
+  -webkit-transform: $transformation;
+  -moz-transform: $transformation;
+  -ms-transform: $transformation;
+  -o-transform: $transformation;
+  transform: $transformation;
+}
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}

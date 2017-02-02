@@ -14,8 +14,21 @@ class CatalogController extends Controller
 {
     public function actionIndex(){
         $query = Products::find();
-        $products = $query -> orderBy('id desc') -> all();
+        $products = $query->orderBy('id desc')->all();
         return $this->render('index', array('products' => $products));
+    }
+    
+    public function actionView($id = '') {
+        if ($id == '') {
+            $query = Products::find();
+            $products = $query->orderBy('id desc')->all();
+            return $this->render('index', array('products' => $products));
+        }
+        else {
+            $query = Products::find();
+            $products = $query -> where('subsubcategory_id=1') -> orderBy('id desc')->all();
+            return $this->render('index', array('products' => $products));
+        }
     }
     
     public function actionProduct($id = ''){

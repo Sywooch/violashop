@@ -1,0 +1,111 @@
+.head-menu{
+  margin-top: 36px;
+  margin-bottom: 43px;
+  &__container {
+
+  }
+  &__menu{
+    width: 100%;
+    // display: table;
+
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    &-element{
+      text-transform: uppercase;
+      // display: table-cell;
+      letter-spacing: 2px;
+      a{
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align:center;
+      }
+      &-active{
+        font-weight: bold;
+      }
+      &-pink {
+        a {
+          color: $link-hover;
+        }
+      }
+      &:first-child{
+        a{
+          text-align: left;
+        }
+      }
+      &:last-child {
+        a{
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+.search-wrapper {
+  display: inline-block;
+  position: absolute;
+  min-height: 21px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 350px;
+  top: 50%;
+  transform: translateY(-50%);
+  .search-results{
+    position: absolute !important;
+    background: #fff;
+    width: 415px;
+    max-height: 350px;
+    /*min-height: 100px;*/
+    //height:100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    //border: 1px solid;
+    top: 100%;
+    margin-top: 2px;
+    /*right: 0;*/
+    padding:10px;
+    /*  padding-top:10px !important;
+      padding-left: 10px !important;
+      padding-right: 10px !important;*/
+    @include border-radius(2px);
+    @include box-shadow(0 7px 40px rgba(0, 0, 0, 0.11));
+    display:none;
+    z-index: 2;
+    .spinner{
+      /*top: 50%;
+      position: absolute;*/
+      /*left: 0;
+      right: 0;*/
+      margin: 10px auto;
+    }
+    .top_search {
+      max-height: 235px;
+    }
+    .bottom_search{
+      background :#fff;
+    }
+    .fade {
+      position: absolute;
+      width: 50px;
+      height: 20px;
+      opacity: 1;
+      top: 0;
+      right: -15px;
+      background-image: linear-gradient(to right,rgba(#fff,.5),#fff);
+    }
+    .searchname  {
+      position: absolute;
+      top: 0;
+      height: 20px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    p.head{
+      text-align: left;
+    }
+  }
+}

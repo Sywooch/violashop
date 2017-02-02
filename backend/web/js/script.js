@@ -132,6 +132,15 @@ $(function(){
     //sendNotification('Новый заказ', { body: 'Поступил новый заказ', tag: 'orders',icon : "/admin/images/cart.png" });
     setInterval(listenOrders, 5000);
 
+    $('.selectpicker').selectpicker();
+    $('.selectpicker').on('show.bs.select', function (e) {
+        var dropdown = $(e.currentTarget).parents('.bootstrap-select').find('div.dropdown-menu');
+        dropdown.slideDown(300);
+    }).on('hide.bs.select', function(e){
+        var dropdown = $(e.currentTarget).parents('.bootstrap-select').find('div.dropdown-menu');
+        dropdown.slideUp(300);
+    });
+
 });
 var notified = 0;
 function listenOrders(){

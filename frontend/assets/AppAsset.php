@@ -13,6 +13,8 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         '//cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css',
+        
+        '//fonts.googleapis.com/icon?family=Material+Icons',
         '/css/font-awesome.min.css',
         '/css/likely.css',
         '/js/chosen/chosen.css',
@@ -22,6 +24,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         '//cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js',
+        
         '/js/likely.js',
         '//cdn.rawgit.com/RobinHerbots/jquery.inputmask/3.2.7/dist/min/jquery.inputmask.bundle.min.js',
         '/js/jquery.inputmask-multi.min.js',

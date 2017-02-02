@@ -1,6 +1,6 @@
 .labels-wrapper {
   position: absolute;
-  top: 20px;
+  top: 10px;
   left: 10px;
   //width: 36px;
   @media (max-width: 1023px) {
@@ -27,7 +27,7 @@
       //top: 6px;
     }
     &.novielty {
-      background: $novelty;
+      background: rgba($novelty, .8);
       color: #fff;
 
     }
@@ -73,4 +73,46 @@
       -webkit-transform: scale(1.0);
       transform: scale(1.0);
     }
+}
+.catalog-menu{
+  &__main{
+    list-style-type: none;
+    padding-left: 0;
+    &.affix{
+      top:70px;
+      width: 280px;
+    }
+  }
+  &__item {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 2.14;
+    cursor: pointer;
+    .caret {
+      @include transitionEaseAll(.4s);
+    }
+    &-active {
+      font-weight: bold;
+    }
+    &-open {
+      .caret {
+        @include transform(rotate(180deg));
+      }
+    }
+  }
+  &__child {
+    padding-left:20px;
+    display: none;
+    cursor: default;
+    &-item {
+      text-transform: none;
+      letter-spacing: normal;
+      line-height: 1.71;
+      margin-bottom: 2px;
+      font-weight: normal;
+      &:last-child{
+        margin-bottom: 10px;
+      }
+    }
+  }
 }

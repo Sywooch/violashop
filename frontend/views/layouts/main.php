@@ -21,6 +21,53 @@ AppAsset::register($this);
     <meta name="theme-color" content="#a386b9">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <style>
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, font, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            font-weight: inherit;
+            font-style: inherit;
+            font-size: 100%;
+            vertical-align: baseline;
+        }
+        /* remember to define focus styles! */
+        :focus {
+            outline: 0;
+        }
+        body {
+            line-height: 1;
+            color: black;
+            background: white;
+        }
+        ol, ul {
+            list-style: none;
+        }
+        /* tables still need 'cellspacing="0"' in the markup */
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        caption, th, td {
+            text-align: left;
+            font-weight: normal;
+        }
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+            content: "";
+        }
+        blockquote, q {
+            quotes: "" "";
+        }
+    </style>
     <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700&subset=cyrillic" rel="stylesheet">
     
     <?php $this->head() ?>
@@ -52,10 +99,16 @@ AppAsset::register($this);
                 <?php
                 if (!\Yii::$app->params['devicedetect']['isDesktop'])
                     echo \app\components\BasketCart::widget(['isMobile' => true])?>
+
+                <div style="" class="search-wrapper js-search-wrapper">
+                    <button type="button" class="pull-left search_btn"></button>
+                    <input type="text" class="search custom js-search" placeholder="Найти фиалку…">
+                    <div class="search-results"><div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div>
+                </div>
             </div>
             <div id="w0-collapse" class="collapse navbar-collapse">
-                <ul id="w1" class="navbar-nav navbar-right nav"><li><a href="/">Главная</a></li>
-                    <li><a href="/catalog">Каталог</a></li>
+                <ul id="w1" class="navbar-nav navbar-right nav">
+                    <li><a href="javascript:void(0)" class="js-login"><i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
                     <li><a href="/site/about">О нас</a></li>
                     <li><a href="/site/contact">Контакты</a></li>
                     
@@ -112,38 +165,16 @@ AppAsset::register($this);
         
     </header>
     <div class="container hidden-xs hidden-sm">
-        <div class="row">
-            <nav class="menu-nav text-center navbar navbar-default container" style="min-height:35px;margin: 15px auto 0;padding-left: 20px;">
-                <div class="header-menu">
-                    <ul class="head-menu nav navbar-nav">
-                        <li class="main-menu expand"><a class="catalog-link" href="/catalog">Каталог</a>
-                            <div class="expandable">
-                                <ul>
-                                    <li><a href="/catalog/fialki/novinki-rs">Новинки РС</a>
-                                        <ul>
-                                            <li><a href="/catalog/fialki/novinki-rs/standarty">Стандарты</a></li>
-                                            <li><a href="/catalog/fialki/novinki-rs/treilers">Трейлеры</a></li>
-                                            <li><a href="/catalog/fialki/novinki-rs/mini">Мини</a></li>
-                                            <li><a href="/catalog/fialki/novinki-rs/streps">Стрептокарпусы</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="/catalog/fialki/sorta-rs-standarty">Сорта РС - стандарты</a></li>
-                                    <li><a href="/catalog/fialki/sorta-rs-treylery">Сорта РС - трейлеры</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="main-menu"><a href="/catalog/special">Спецпредложения</a></li>
-                        <li class="main-menu"><a href="#">Выставки</a></li>
-                        <li class="main-menu"><a href="#">Сеянцы</a></li>
-                        <li class="main-menu"><a href="/catalog/all">Все сорта РС</a></li>
-                    </ul>
-                    <div style="float:right;display:inline-block;top: 6px;position: relative;min-height:21px " class="js-search-wrapper">
-                        <button type="button" class="pull-left search_btn"></button>
-                        <input type="text" class="search custom js-search" placeholder="Найти фиалку…">
-                        <div class="search-results"><div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div>
-                    </div>
-                </div>
-            </nav>
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-lg-12 col-md-12">
+            <ul class="head-menu__menu">
+                    <li class="head-menu__menu-element "><a href="/catalog">Каталог</a></li>
+                    <li class="head-menu__menu-element "><a href="/catalog/special">Спецпредложения</a></li>
+                    <li class="head-menu__menu-element "><a href="#">Выставки</a></li>
+                    <li class="head-menu__menu-element "><a href="#">Сеянцы</a></li>
+                    <li class="head-menu__menu-element "><a href="/catalog/all">Все сорта РС</a></li>
+            </ul>
+        </div>
         </div>
     </div>
     <?php
@@ -181,6 +212,13 @@ AppAsset::register($this);
 </footer>
 
 <?php $this->endBody() ?>
+<script>
+    $(function(){
+        $('.js-menu-parent').on('click', function(){
+            $(this).toggleClass('catalog-menu__item-open').find('.catalog-menu__child').slideToggle(400);
+        });
+    })
+</script>
 </body>
 </html>
 <?php $this->endPage() ?>

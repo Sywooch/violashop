@@ -1,0 +1,37 @@
+.categories{
+  .category {
+    &__name {
+      float: left;
+      width: 25%;
+    }
+  }
+}
+
+.admin-content{
+  //padding-left: 0;
+  //padding-right: 0;
+}
+.catalog-items{
+  padding-left: 0;
+  padding-right: 0;
+}
+.catalog-item {
+  //height: 25px;
+  border-bottom: 1px solid #ececec;
+  width: 100%;
+  &:last-child {
+    border-bottom: none;
+  }
+  &:hover {
+    background: #f3f3f5;
+  }
+  a{
+    padding: 5px 10px;
+    display: block;
+    height: 100%;
+    width: 100%;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+}

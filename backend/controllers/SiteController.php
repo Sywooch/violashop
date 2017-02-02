@@ -24,14 +24,14 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error', 'logout'],
                         'allow' => true,
                         
                     ],
                     [
                         'actions' => ['logout', 'index', 'getold', 'copy', 'migrate'],
                         'allow' => true,
-                        'roles' => ['admin'],
+                        'roles' => ['admin', 'kayuda91'],
                     ],
                     
                 ],
@@ -65,7 +65,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         
-        return $this->render('index');
+        return $this->redirect('/admin/orders');
     }
 
     /**

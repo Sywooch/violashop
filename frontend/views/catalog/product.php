@@ -52,7 +52,7 @@ $inStok = $product['stock'];
 </style>
 <div class="text-center">
     <div class="col-lg-8">
-        <div class="fotorama" style=" max-width:100%; margin: 0 auto" data-nav="thumbs" data-transition="slide" data-allowfullscreen="true">
+        <div class="fotorama" style="width:100%; max-width:100%; margin: 0 auto" data-nav="thumbs" data-transition="slide" data-allowfullscreen="true">
             <?php foreach ($arrImages as $image) {
                 ?>
                 <a href="/uploads/products/<?=$product['id']?>/<?=$image?>"></a>
