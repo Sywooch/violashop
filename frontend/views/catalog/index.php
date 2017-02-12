@@ -12,20 +12,12 @@ $childInStok = 0;
 $headInStok = 0;
 $inStok = 0;
 ?>
-<div class="col-lg-3 col-md-3">
+<div class="col-lg-3 col-md-3 hidden-xs hidden-sm">
     <ul class="catalog-menu__main" data-spy="affix" data-offset-top="295">
-        <li class="catalog-menu__item catalog-menu__item-parent js-menu-parent">Новинки РС <span class="caret"></span>
-            <ul class="catalog-menu__child">
-                <li class="catalog-menu__child-item"><a href="/catalog/fialki/novinki-rs/standarty">Стандарты</a></li>
-                <li class="catalog-menu__child-item"><a href="/catalog/fialki/novinki-rs/treilers">Трейлеры</a></li>
-                <li class="catalog-menu__child-item"><a href="/catalog/fialki/novinki-rs/mini">Мини</a></li>
-                <li class="catalog-menu__child-item"><a href="/catalog/fialki/novinki-rs/streps">Стрептокарпусы</a></li>
-            </ul>
-        </li>
-        <li class="catalog-menu__item"><a href="/catalog/fialki/sorta-rs-standarty">Сорта РС - стандарты</a></li>
-        <li class="catalog-menu__item"><a href="/catalog/fialki/sorta-rs-mini">Сорта РС - мини</a></li>
-        <li class="catalog-menu__item"><a href="/catalog/fialki/sorta-rs-treylery">Сорта РС - трейлеры</a></li>
-        <li class="catalog-menu__item">Стрептокарпусы</li>
+        <?php
+            echo \app\components\MenuWidget::widget();
+        ?>
+        
     </ul>
 </div>
 <div class="col-lg-9 col-xs-12 col-sm-12 col-md-9 " style="padding-right: 5px;padding-left: 5px;">

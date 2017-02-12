@@ -100,7 +100,7 @@ AppAsset::register($this);
                 if (!\Yii::$app->params['devicedetect']['isDesktop'])
                     echo \app\components\BasketCart::widget(['isMobile' => true])?>
 
-                <div style="" class="search-wrapper js-search-wrapper">
+                <div style="" class="search-wrapper js-search-wrapper  hidden-xs hidden-sm">
                     <button type="button" class="pull-left search_btn"></button>
                     <input type="text" class="search custom js-search" placeholder="Найти фиалку…">
                     <div class="search-results"><div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div>
@@ -167,13 +167,22 @@ AppAsset::register($this);
     <div class="container hidden-xs hidden-sm">
         <div class="row" style="margin-top: 20px;">
             <div class="col-lg-12 col-md-12">
-            <ul class="head-menu__menu">
+                <ul class="head-menu__menu">
+                    <?php echo \app\components\HorizontalMenu::widget(['Menu' => [
+                            ['url' => '/catalog', 'name' => 'Каталог'],
+                            ['url' => '/catalog/special', 'name' => 'Спецпредложения'],
+                            ['url' => 'javascript:void(0)', 'name' => 'Выставки'],
+                            ['url' => 'javascript:void(0)', 'name' => 'Сеянцы'],
+                            ['url' => '/catalog/all', 'name' => 'Все сорта РС'],
+                    ]]) ?>
+                </ul>
+            <!--<ul class="head-menu__menu">
                     <li class="head-menu__menu-element "><a href="/catalog">Каталог</a></li>
                     <li class="head-menu__menu-element "><a href="/catalog/special">Спецпредложения</a></li>
                     <li class="head-menu__menu-element "><a href="#">Выставки</a></li>
                     <li class="head-menu__menu-element "><a href="#">Сеянцы</a></li>
                     <li class="head-menu__menu-element "><a href="/catalog/all">Все сорта РС</a></li>
-            </ul>
+            </ul>-->
         </div>
         </div>
     </div>
